@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "2BINARY.C": "cpp",
+        "3CIRCLEP.C": "cpp"
+    },
+    "cmake.configureOnOpen": true
+}
