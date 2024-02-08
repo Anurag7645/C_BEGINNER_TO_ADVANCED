@@ -1,31 +1,21 @@
 #include <stdio.h>
-/* Swap function to swap two integers */
+
 void swap(int* a, int* b) {
     int temp = *a;
     *a = *b;
     *b = temp;
 }
-/* Function to find the length of an array */
-int length(int A[]) {
-    int n = 0;
-    while (A[n] != '\0') {
-        n++;
-    }
-    return n;
-}
 
 void Heapify(int A[], int n, int i) {
     int max = i;
-    int leftchild = (2 * i) + 1;
-    int rightchild = (2 * i) + 2;
+    int leftchild = 2 * i + 1;
+    int rightchild = 2 * i + 2;
 
-    if (leftchild <= n && A[i] < A[leftchild]) {
+    if (leftchild < n && A[leftchild] > A[max]) {
         max = leftchild;
-    } else {
-        max = i;
     }
 
-    if (rightchild <= n && A[max] > A[rightchild]) {
+    if (rightchild < n && A[rightchild] > A[max]) {
         max = rightchild;
     }
 
@@ -36,13 +26,14 @@ void Heapify(int A[], int n, int i) {
 }
 
 void Heapsort(int A[], int n) {
-    for (int i = n / 2; i >= 0; i--) {
-        Heapify(A, n, i);
+
+    for (int i = n - 1; i >= 0; i--) {
+        swap(&A[0], &A[i]);
+        Heapify(A, i, 0);
     }
 
-    for (int i = n; i >= 2; i--) {
-        swap(&A[1], &A[i]);
-        Heapify(A, i - 1, 1);
+     for (int i = n / 2 - 1; i >= 0; i--) {
+        Heapify(A, n, i);
     }
 }
 
