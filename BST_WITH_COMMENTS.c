@@ -44,9 +44,17 @@ int main() /* Main function */
 {
     struct node* root = NULL; /* Initialize the root of the binary tree to NULL */
     root = insert(root, 5); /* Insert the first node with data 5 */
+    printf("Root data into the main funtion:%d\n",root->data);
     insert(root, 3); /* Insert a new node with data 3 */
+    printf("Root data after second insertion of data:%d\n",root->data);
     insert(root, 7); /* Insert a new node with data 7 */
-    struct node* result = Search(root, 5); /* Search for a node with data 5 */
+    printf("Root data after insertion of third data:%d\n",root->data);
+    insert(root, 8);/* Insert a new node with data 8 */
+    printf("Root data after insertion of fourth data:%d\n",root->data);
+    insert(root, 2);/* Insert a new node with data 2 */
+    printf("Root data after insertion of fifth data:%d\n",root->data);
+    printf("Entering the serching function to search for 8 in the tree :\n");
+    struct node* result = Search(root, 8); /* Search for a node with data 8 */
     if(result != NULL) /* If the node is found, print the data */
         printf("Found %d\n", result->data);
     else /* If the node is not found, print a message */
