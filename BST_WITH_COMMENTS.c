@@ -29,18 +29,31 @@ struct node* Search(struct node* root, int x) /* Function to search for a node w
 
 struct node* insert(struct node* node, int data) /* Function to insert a new node with given data in the binary tree */
 {
-    if (node == NULL) /* If the tree is empty, create a new node */
-        node = create_node(data);
-    else if (data < node->data) /* If the data is less than the current node data, insert in the left subtree */
+    if (node == NULL){ /* If the tree is empty, create a new node */
+        node = create_node(data);}
+    else if (data < node->data){ /* If the data is less than the current node data, insert in the left subtree */
         node->left_child = insert(node->left_child, data);
-    else if (data > node->data) /* If the data is greater than the current node data, insert in the right subtree */
+        printf("In function:%d \n ",node->data);}
+    else if (data > node->data){ /* If the data is greater than the current node data, insert in the right subtree */
         node->right_child = insert(node->right_child, data);
-    else /* If the data is already present, print a message */
-        printf("Data %d is already present in Binary Tree\n", data);
+        printf("In function:%d \n ",node->data);}
+    else{ /* If the data is already present, print a message */
+        printf("Data %d is already present in Binary Tree\n", data);}
     return node; /* Return the updated tree */
 }
 
-int main() /* Main function */
+struct node* inorder(struct node* root) /* Function to print the binary tree in inorder traversal */
+{
+    if (root != NULL) /* If the root is not NULL, traverse the tree */
+    {
+        inorder(root->left_child); /* Print the left subtree */
+        printf("%d ", root->data); /* Print the data of the current node */
+        inorder(root->right_child); /* Print the right subtree */
+    }
+    return root; /* Return the root of the tree */
+}
+
+int main()
 {
     struct node* root = NULL; /* Initialize the root of the binary tree to NULL */
     root = insert(root, 5); /* Insert the first node with data 5 */
@@ -53,6 +66,7 @@ int main() /* Main function */
     printf("Root data after insertion of fourth data:%d\n",root->data);
     insert(root, 2);/* Insert a new node with data 2 */
     printf("Root data after insertion of fifth data:%d\n",root->data);
+    printf("Current State of tree using Inorder traversal\n",inorder(root));/* Traverse and print the binary tree in inorder fashion */
     printf("Entering the serching function to search for 8 in the tree :\n");
     struct node* result = Search(root, 8); /* Search for a node with data 8 */
     if(result != NULL) /* If the node is found, print the data */
