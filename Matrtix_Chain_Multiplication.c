@@ -4,7 +4,7 @@ int main() {
     int matno;
     printf("Enter the no of matrix to be multiplied: ");
     scanf("%d", &matno);
-    int cost[matno][matno], k[matno][matno];
+    long cost[matno][matno], k[matno][matno];
 
     int dimension[matno * 2], col[matno], row[matno];
     for (int i = 0; i < matno; ++i) {
@@ -40,6 +40,7 @@ int main() {
         for(int j=0;j< matno;j++)
         {
           printf( "%d%d ",cost[i][j]);
+          printf(k[i][j]);
         }
     }
     return 0;
