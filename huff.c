@@ -60,7 +60,7 @@ void HuffmanCodes(char data[], int freq[], int size) {
                 min2 = i;
             }
         }
-        struct Node* combined = newNode('$', nodes[min1]->freq + nodes[min2]->freq);
+        struct Node* combined = newNode('$, nodes[min1]->freq + nodes[min2]->freq);
         combined->left = nodes[min1];
         combined->right = nodes[min2];
         nodes[min1] = combined;
